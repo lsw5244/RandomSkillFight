@@ -6,6 +6,9 @@ public class CameraMove : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed = 1f;
+    [SerializeField]
+    private float zoomSpeed = 20f;
+
     int screenWidth = Screen.width;
     int screenHeight = Screen.height;
 
@@ -22,11 +25,6 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(0))
-        {
-            Debug.Log($"마우스의 위치는 {Input.mousePosition}");
-        }
-
         if(Input.mousePosition.x >= screenWidth)
         {
             transform.Translate(moveSpeed * Time.deltaTime, 0, 0, Space.World);
@@ -46,5 +44,23 @@ public class CameraMove : MonoBehaviour
         {
             transform.Translate(0, 0, -moveSpeed * Time.deltaTime, Space.World);
         }
+
+        float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
+        Debug.Log(scrollWheel);
+
+        if(scrollWheel != 0f)
+        {
+            transform.Translate(0, 0, scrollWheel * zoomSpeed * Time.deltaTime, Space.Self);
+        }
+        //if (scrollWheel > 0f)
+        //{
+        //    //++
+        //    transform.Translate(0, 0, scrollWheel * zoomSpeed * Time.deltaTime, Space.Self);
+        //}
+        //else if(scrollWheel < 0f)
+        //{
+        //    //--
+        //    transform.Translate(0, 0, -scrollWheel * zoomSpeed * Time.deltaTime, Space.Self);
+        //}
     }
 }
