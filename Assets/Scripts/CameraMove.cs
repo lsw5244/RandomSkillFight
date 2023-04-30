@@ -5,9 +5,9 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     [SerializeField]
-    private float moveSpeed = 1f;
+    private float moveSpeed = 10f;
     [SerializeField]
-    private float zoomSpeed = 20f;
+    private float zoomSpeed = 2000f;
 
     int screenWidth = Screen.width;
     int screenHeight = Screen.height;
@@ -48,19 +48,19 @@ public class CameraMove : MonoBehaviour
         float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
         Debug.Log(scrollWheel);
 
-        if(scrollWheel != 0f)
-        {
-            transform.Translate(0, 0, scrollWheel * zoomSpeed * Time.deltaTime, Space.Self);
-        }
-        //if (scrollWheel > 0f)
+        //if(scrollWheel != 0f)
         //{
-        //    //++
         //    transform.Translate(0, 0, scrollWheel * zoomSpeed * Time.deltaTime, Space.Self);
         //}
-        //else if(scrollWheel < 0f)
-        //{
-        //    //--
-        //    transform.Translate(0, 0, -scrollWheel * zoomSpeed * Time.deltaTime, Space.Self);
-        //}
+        if (scrollWheel > 0f)
+        {
+            //++
+            transform.Translate(0, 0, zoomSpeed * Time.deltaTime, Space.Self);
+        }
+        else if (scrollWheel < 0f)
+        {
+            //--
+            transform.Translate(0, 0, -zoomSpeed * Time.deltaTime, Space.Self);
+        }
     }
 }
