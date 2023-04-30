@@ -12,6 +12,11 @@ public class CameraMove : MonoBehaviour
     int screenWidth = Screen.width;
     int screenHeight = Screen.height;
 
+    [SerializeField]
+    float minCamearaHeight = 4f;
+    [SerializeField]
+    float maxCamearaHeight = 14f;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; /* 마우스 위치를 중앙에서 벗어나지 못하도록 잠궈줍니다. */
@@ -46,21 +51,26 @@ public class CameraMove : MonoBehaviour
         }
 
         float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
-        Debug.Log(scrollWheel);
-
-        //if(scrollWheel != 0f)
-        //{
-        //    transform.Translate(0, 0, scrollWheel * zoomSpeed * Time.deltaTime, Space.Self);
-        //}
         if (scrollWheel > 0f)
         {
             //++
-            transform.Translate(0, 0, zoomSpeed * Time.deltaTime, Space.Self);
+            Vector3 nextPos = transform.position + transform.forward * zoomSpeed * Time.deltaTime;
+
+            if(nextPos.y > minCamearaHeight)
+            {
+                transform.position = nextPos;
+            }
+
         }
         else if (scrollWheel < 0f)
         {
             //--
-            transform.Translate(0, 0, -zoomSpeed * Time.deltaTime, Space.Self);
+            Vector3 nextPos = transform.position + transform.forward * -zoomSpeed * Time.deltaTime;
+
+            if (nextPos.y < maxCamearaHeight)
+            {
+                transform.position = nextPos;
+            }
         }
     }
 }
