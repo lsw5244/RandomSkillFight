@@ -16,17 +16,17 @@ public class UseSkill : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q))
         {
             selectSkill.SkillQ();
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             selectSkill.SkillW();
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             selectSkill.SkillE();
         }
