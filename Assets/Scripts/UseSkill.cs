@@ -6,12 +6,13 @@ public class UseSkill : MonoBehaviour
 {
     [SerializeField]
     private Skill[] skills;
-
     private Skill selectSkill;
+
+    private int skillIdx = 0;
 
     private void Start()
     {
-        selectSkill = skills[0];
+        selectSkill = skills[skillIdx];
     }
 
     void Update()
