@@ -6,7 +6,9 @@ public class TempSkill : Skill
 {
     private void Start()
     {
-        QSkillCoolTime = 3f;
+        QSkillCoolTime = 1f;
+        WSkillCoolTime = 3f;
+        ESkillCoolTime = 5f;
     }
 
     public override void SkillQ()

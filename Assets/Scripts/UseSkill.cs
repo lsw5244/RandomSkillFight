@@ -29,11 +29,15 @@ public class UseSkill : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
+            skillUIManager.StartWSkillCollTime(selectSkill.WSkillCoolTime);
+
             selectSkill.SkillW();
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            skillUIManager.StartESkillCollTime(selectSkill.ESkillCoolTime);
+
             selectSkill.SkillE();
         }
     }

@@ -32,26 +32,55 @@ public class SkillUIManager : MonoBehaviour
             yield return null;
         }
         qSkillCoolTimeImage.fillAmount = 0f;
-
     }
 
     public void StartWSkillCollTime(float coolTime)
     {
-
+        StartCoroutine("StartWSkillCollTimeCoroutine", coolTime);
     }
 
     IEnumerator StartWSkillCollTimeCoroutine(float coolTime)
     {
-        yield return null;
+        wSkillCoolTimeImage.fillAmount = 1f;
+        float coolTimeProgress = 0.0f;
+
+        while (true)
+        {
+            coolTimeProgress += Time.deltaTime;
+
+            if (coolTimeProgress >= coolTime)
+            {
+                break;
+            }
+
+            wSkillCoolTimeImage.fillAmount = 1.0f - coolTimeProgress / coolTime;
+            yield return null;
+        }
+        wSkillCoolTimeImage.fillAmount = 0f;
     }
 
     public void StartESkillCollTime(float coolTime)
     {
-
+        StartCoroutine("StartESkillCollTimeCoroutine", coolTime);
     }
 
     IEnumerator StartESkillCollTimeCoroutine(float coolTime)
     {
-        yield return null;
+        eSkillCoolTimeImage.fillAmount = 1f;
+        float coolTimeProgress = 0.0f;
+
+        while (true)
+        {
+            coolTimeProgress += Time.deltaTime;
+
+            if (coolTimeProgress >= coolTime)
+            {
+                break;
+            }
+
+            eSkillCoolTimeImage.fillAmount = 1.0f - coolTimeProgress / coolTime;
+            yield return null;
+        }
+        eSkillCoolTimeImage.fillAmount = 0f;
     }
 }
