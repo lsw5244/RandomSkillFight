@@ -11,12 +11,28 @@ public class SkillUIManager : MonoBehaviour
 
     public void StartQSkillCollTime(float coolTime)
     {
-
+        StartCoroutine("StartQSkillCollTimeCoroutine", coolTime);
     }
 
     IEnumerator StartQSkillCollTimeCoroutine(float coolTime)
     {
-        yield return null;
+        qSkillCoolTimeImage.fillAmount = 1f;
+        float coolTimeProgress = 0.0f;
+
+        while(true)
+        {
+            coolTimeProgress += Time.deltaTime;
+
+            if(coolTimeProgress >= coolTime)
+            {
+                break;
+            }
+
+            qSkillCoolTimeImage.fillAmount = coolTimeProgress / coolTime;
+            yield return null;
+        }
+        qSkillCoolTimeImage.fillAmount = 0f;
+
     }
 
     public void StartWSkillCollTime(float coolTime)
