@@ -10,9 +10,13 @@ public class UseSkill : MonoBehaviour
 
     private int skillIdx = 0;
 
+    private SkillUIManager skillUIManager;
+
     private void Start()
     {
         selectSkill = skills[skillIdx];
+
+        skillUIManager = GameObject.Find("SkillUIManager").GetComponent<SkillUIManager>();
     }
 
     void Update()
