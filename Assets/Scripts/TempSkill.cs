@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TempSkill : Skill
 {
+    private void Start()
+    {
+        QSkillCoolTime = 3f;
+    }
+
     public override void SkillQ()
     {
         Debug.Log("Q스킬 발동 !!!");

@@ -15,7 +15,6 @@ public class UseSkill : MonoBehaviour
     private void Start()
     {
         selectSkill = skills[skillIdx];
-
         skillUIManager = GameObject.Find("SkillUIManager").GetComponent<SkillUIManager>();
     }
 
@@ -23,6 +22,8 @@ public class UseSkill : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
+            skillUIManager.StartQSkillCollTime(selectSkill.QSkillCoolTime);
+
             selectSkill.SkillQ();
         }
 

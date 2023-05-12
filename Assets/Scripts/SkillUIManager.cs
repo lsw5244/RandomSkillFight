@@ -28,7 +28,7 @@ public class SkillUIManager : MonoBehaviour
                 break;
             }
 
-            qSkillCoolTimeImage.fillAmount = coolTimeProgress / coolTime;
+            qSkillCoolTimeImage.fillAmount = 1.0f - coolTimeProgress / coolTime;
             yield return null;
         }
         qSkillCoolTimeImage.fillAmount = 0f;
