@@ -442,9 +442,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3c2c37915f13e4ba61102da06703a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qSkillCoolTimeImage: {fileID: 1667025308}
-  wSkillCoolTimeImage: {fileID: 1815087990}
-  eSkillCoolTimeImage: {fileID: 214063101}
+  qSkillCoolDownImage: {fileID: 1667025308}
+  wSkillCoolDownImage: {fileID: 1815087990}
+  eSkillCoolDownImage: {fileID: 214063101}
 --- !u!4 &349268246
 Transform:
   m_ObjectHideFlags: 0

@@ -5,82 +5,82 @@ using UnityEngine.UI;
 
 public class SkillUIManager : MonoBehaviour
 {
-    public Image qSkillCoolTimeImage;
-    public Image wSkillCoolTimeImage;
-    public Image eSkillCoolTimeImage;
+    public Image qSkillCoolDownImage;
+    public Image wSkillCoolDownImage;
+    public Image eSkillCoolDownImage;
 
-    public void StartQSkillCollTime(float coolTime)
+    public void EnableQSkillCoolDownImg(float coolDown)
     {
-        StartCoroutine("StartQSkillCollTimeCoroutine", coolTime);
+        StartCoroutine("StartQSkillCoolDownCoroutine", coolDown);
     }
 
-    IEnumerator StartQSkillCollTimeCoroutine(float coolTime)
+    IEnumerator StartQSkillCoolDownCoroutine(float coolDown)
     {
-        qSkillCoolTimeImage.fillAmount = 1f;
+        qSkillCoolDownImage.fillAmount = 1f;
         float coolTimeProgress = 0.0f;
 
         while(true)
         {
             coolTimeProgress += Time.deltaTime;
 
-            if(coolTimeProgress >= coolTime)
+            if(coolTimeProgress >= coolDown)
             {
                 break;
             }
 
-            qSkillCoolTimeImage.fillAmount = 1.0f - coolTimeProgress / coolTime;
+            qSkillCoolDownImage.fillAmount = 1.0f - coolTimeProgress / coolDown;
             yield return null;
         }
-        qSkillCoolTimeImage.fillAmount = 0f;
+        qSkillCoolDownImage.fillAmount = 0f;
     }
 
-    public void StartWSkillCollTime(float coolTime)
+    public void StartWSkillCoolDown(float coolDown)
     {
-        StartCoroutine("StartWSkillCollTimeCoroutine", coolTime);
+        StartCoroutine("StartWSkillCoolDownCoroutine", coolDown);
     }
 
-    IEnumerator StartWSkillCollTimeCoroutine(float coolTime)
+    IEnumerator StartWSkillCoolDownCoroutine(float coolDown)
     {
-        wSkillCoolTimeImage.fillAmount = 1f;
+        wSkillCoolDownImage.fillAmount = 1f;
         float coolTimeProgress = 0.0f;
 
         while (true)
         {
             coolTimeProgress += Time.deltaTime;
 
-            if (coolTimeProgress >= coolTime)
+            if (coolTimeProgress >= coolDown)
             {
                 break;
             }
 
-            wSkillCoolTimeImage.fillAmount = 1.0f - coolTimeProgress / coolTime;
+            wSkillCoolDownImage.fillAmount = 1.0f - coolTimeProgress / coolDown;
             yield return null;
         }
-        wSkillCoolTimeImage.fillAmount = 0f;
+        wSkillCoolDownImage.fillAmount = 0f;
     }
 
-    public void StartESkillCollTime(float coolTime)
+    public void StartESkillCoolDown(float coolDown)
     {
-        StartCoroutine("StartESkillCollTimeCoroutine", coolTime);
+        StartCoroutine("StartESkillCoolDownCoroutine", coolDown);
     }
 
-    IEnumerator StartESkillCollTimeCoroutine(float coolTime)
+    IEnumerator StartESkillCoolDownCoroutine(float coolDown)
     {
-        eSkillCoolTimeImage.fillAmount = 1f;
+        eSkillCoolDownImage.fillAmount = 1f;
         float coolTimeProgress = 0.0f;
 
         while (true)
         {
             coolTimeProgress += Time.deltaTime;
 
-            if (coolTimeProgress >= coolTime)
+            if (coolTimeProgress >= coolDown)
             {
                 break;
             }
 
-            eSkillCoolTimeImage.fillAmount = 1.0f - coolTimeProgress / coolTime;
+            eSkillCoolDownImage.fillAmount = 1.0f - coolTimeProgress / coolDown;
             yield return null;
         }
-        eSkillCoolTimeImage.fillAmount = 0f;
+        eSkillCoolDownImage.fillAmount = 0f;
     }
 }
