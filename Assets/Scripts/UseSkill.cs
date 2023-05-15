@@ -22,21 +22,21 @@ public class UseSkill : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            skillUIManager.EnableQSkillCoolDownImg(selectSkill.QSkillCoolTime);
+            skillUIManager.EnableSkillCoolDownImg(selectSkill.QSkillCoolTime, SkillType.Q);
 
             selectSkill.SkillQ();
         }
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            skillUIManager.StartWSkillCoolDown(selectSkill.WSkillCoolTime);
+            skillUIManager.EnableSkillCoolDownImg(selectSkill.WSkillCoolTime, SkillType.W);
 
             selectSkill.SkillW();
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            skillUIManager.StartESkillCoolDown(selectSkill.ESkillCoolTime);
+            skillUIManager.EnableSkillCoolDownImg(selectSkill.ESkillCoolTime, SkillType.E);
 
             selectSkill.SkillE();
         }

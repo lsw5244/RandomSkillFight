@@ -9,9 +9,20 @@ public class SkillUIManager : MonoBehaviour
     public Image wSkillCoolDownImage;
     public Image eSkillCoolDownImage;
 
-    public void EnableQSkillCoolDownImg(float coolDown)
+    public void EnableSkillCoolDownImg(float coolDown, SkillType skillType)
     {
-        StartCoroutine("StartQSkillCoolDownCoroutine", coolDown);
+        switch(skillType)
+        {
+            case SkillType.Q:
+                StartCoroutine("StartQSkillCoolDownCoroutine", coolDown);
+                break;
+            case SkillType.W:
+                StartCoroutine("StartWSkillCoolDownCoroutine", coolDown);
+                break;
+            case SkillType.E:
+                StartCoroutine("StartESkillCoolDownCoroutine", coolDown);
+                break;
+        }
     }
 
     IEnumerator StartQSkillCoolDownCoroutine(float coolDown)
@@ -34,11 +45,6 @@ public class SkillUIManager : MonoBehaviour
         qSkillCoolDownImage.fillAmount = 0f;
     }
 
-    public void StartWSkillCoolDown(float coolDown)
-    {
-        StartCoroutine("StartWSkillCoolDownCoroutine", coolDown);
-    }
-
     IEnumerator StartWSkillCoolDownCoroutine(float coolDown)
     {
         wSkillCoolDownImage.fillAmount = 1f;
@@ -57,11 +63,6 @@ public class SkillUIManager : MonoBehaviour
             yield return null;
         }
         wSkillCoolDownImage.fillAmount = 0f;
-    }
-
-    public void StartESkillCoolDown(float coolDown)
-    {
-        StartCoroutine("StartESkillCoolDownCoroutine", coolDown);
     }
 
     IEnumerator StartESkillCoolDownCoroutine(float coolDown)
