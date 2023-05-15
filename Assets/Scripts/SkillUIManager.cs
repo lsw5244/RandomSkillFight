@@ -9,27 +9,28 @@ public class SkillUIManager : MonoBehaviour
     public Image wSkillCoolDownImage;
     public Image eSkillCoolDownImage;
 
-    public void EnableSkillCoolDownImg(float coolDown, SkillType skillType)
+    public void EnableSkillCoolDownImg(float coolDown, SkillType skillType, UseSkill useSkill)
     {
         switch(skillType)
         {
             case SkillType.Q:
-                StartCoroutine("StartQSkillCoolDownCoroutine", coolDown);
+                StartCoroutine(StartQSkillCoolDownCoroutine(coolDown, useSkill));
                 break;
             case SkillType.W:
-                StartCoroutine("StartWSkillCoolDownCoroutine", coolDown);
+                StartCoroutine(StartWSkillCoolDownCoroutine(coolDown, useSkill));
                 break;
             case SkillType.E:
-                StartCoroutine("StartESkillCoolDownCoroutine", coolDown);
+                StartCoroutine(StartESkillCoolDownCoroutine(coolDown, useSkill));
                 break;
         }
     }
 
-    IEnumerator StartQSkillCoolDownCoroutine(float coolDown)
+    IEnumerator StartQSkillCoolDownCoroutine(float coolDown, UseSkill useSkill)
     {
+        useSkill.qSkillReady = false;
+
         qSkillCoolDownImage.fillAmount = 1f;
         float coolTimeProgress = 0.0f;
-
         while(true)
         {
             coolTimeProgress += Time.deltaTime;
@@ -43,13 +44,16 @@ public class SkillUIManager : MonoBehaviour
             yield return null;
         }
         qSkillCoolDownImage.fillAmount = 0f;
+
+        useSkill.qSkillReady = true;
     }
 
-    IEnumerator StartWSkillCoolDownCoroutine(float coolDown)
+    IEnumerator StartWSkillCoolDownCoroutine(float coolDown, UseSkill useSkill)
     {
+        useSkill.wSkillReady = false;
+
         wSkillCoolDownImage.fillAmount = 1f;
         float coolTimeProgress = 0.0f;
-
         while (true)
         {
             coolTimeProgress += Time.deltaTime;
@@ -63,13 +67,16 @@ public class SkillUIManager : MonoBehaviour
             yield return null;
         }
         wSkillCoolDownImage.fillAmount = 0f;
+
+        useSkill.wSkillReady = true;
     }
 
-    IEnumerator StartESkillCoolDownCoroutine(float coolDown)
+    IEnumerator StartESkillCoolDownCoroutine(float coolDown, UseSkill useSkill)
     {
+        useSkill.eSkillReady = false;
+
         eSkillCoolDownImage.fillAmount = 1f;
         float coolTimeProgress = 0.0f;
-
         while (true)
         {
             coolTimeProgress += Time.deltaTime;
@@ -83,5 +90,7 @@ public class SkillUIManager : MonoBehaviour
             yield return null;
         }
         eSkillCoolDownImage.fillAmount = 0f;
+
+        useSkill.eSkillReady = true;
     }
 }

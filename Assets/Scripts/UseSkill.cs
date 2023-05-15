@@ -12,6 +12,13 @@ public class UseSkill : MonoBehaviour
 
     private SkillUIManager skillUIManager;
 
+    [HideInInspector]
+    public bool qSkillReady = true;
+    [HideInInspector]
+    public bool wSkillReady = true;
+    [HideInInspector]
+    public bool eSkillReady = true;
+
     private void Start()
     {
         selectSkill = skills[skillIdx];
@@ -20,24 +27,21 @@ public class UseSkill : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q) && qSkillReady == true)
         {
-            skillUIManager.EnableSkillCoolDownImg(selectSkill.QSkillCoolTime, SkillType.Q);
-
+            skillUIManager.EnableSkillCoolDownImg(selectSkill.QSkillCoolTime, SkillType.Q, GetComponent<UseSkill>());
             selectSkill.SkillQ();
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && wSkillReady == true)
         {
-            skillUIManager.EnableSkillCoolDownImg(selectSkill.WSkillCoolTime, SkillType.W);
-
+            skillUIManager.EnableSkillCoolDownImg(selectSkill.WSkillCoolTime, SkillType.W, GetComponent<UseSkill>());
             selectSkill.SkillW();
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && eSkillReady == true)
         {
-            skillUIManager.EnableSkillCoolDownImg(selectSkill.ESkillCoolTime, SkillType.E);
-
+            skillUIManager.EnableSkillCoolDownImg(selectSkill.ESkillCoolTime, SkillType.E, GetComponent<UseSkill>());
             selectSkill.SkillE();
         }
     }
