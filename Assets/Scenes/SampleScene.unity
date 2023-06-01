@@ -992,6 +992,7 @@ MonoBehaviour:
   zoomSpeed: 500
   minCamearaHeight: 4
   maxCamearaHeight: 14
+  playerTr: {fileID: 609082882}
 --- !u!1 &1012786978
 GameObject:
   m_ObjectHideFlags: 0

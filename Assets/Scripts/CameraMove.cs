@@ -17,22 +17,34 @@ public class CameraMove : MonoBehaviour
     [SerializeField]
     float maxCamearaHeight = 14f;
 
+    [SerializeField]
+    Transform playerTr;
+
+    private Vector3 originPos;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; /* 마우스 위치를 중앙에서 벗어나지 못하도록 잠궈줍니다. */
         Cursor.lockState = CursorLockMode.Confined; /* 게임 창 밖으로 나가는 것을 막아줍니다. */
         Cursor.lockState = CursorLockMode.None; /* 마우스 커서의 제한을 풀어줍니다. (기본 옵션) */
 
+        originPos = transform.position;
+
         Debug.Log($"screenWidth : {screenWidth}");
         Debug.Log($"screenHeight : {screenHeight}");
     }
 
-    // Update is called once per frame
     void Update()
     {
         CameraPositionMove();
 
         CameraZoom();
+
+        if(Input.GetKey(KeyCode.Space))
+        {
+            Vector3 v = playerTr.position + originPos;
+            transform.position = v;
+        }
     }
 
     void CameraPositionMove()
@@ -70,7 +82,6 @@ public class CameraMove : MonoBehaviour
             {
                 transform.position = nextPos;
             }
-
         }
         else if (scrollWheel < 0f)
         {
