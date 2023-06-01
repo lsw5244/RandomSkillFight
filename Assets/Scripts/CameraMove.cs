@@ -30,7 +30,14 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.mousePosition.x >= screenWidth)
+        CameraPositionMove();
+
+        CameraZoom();
+    }
+
+    void CameraPositionMove()
+    {
+        if (Input.mousePosition.x >= screenWidth)
         {
             transform.Translate(moveSpeed * Time.deltaTime, 0, 0, Space.World);
         }
@@ -44,19 +51,22 @@ public class CameraMove : MonoBehaviour
         {
             transform.Translate(0, 0, moveSpeed * Time.deltaTime, Space.World);
         }
-        
+
         if (Input.mousePosition.y <= 0)
         {
             transform.Translate(0, 0, -moveSpeed * Time.deltaTime, Space.World);
         }
-
+    }
+    
+    void CameraZoom()
+    {
         float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
         if (scrollWheel > 0f)
         {
             //++
             Vector3 nextPos = transform.position + transform.forward * zoomSpeed * Time.deltaTime;
 
-            if(nextPos.y > minCamearaHeight)
+            if (nextPos.y > minCamearaHeight)
             {
                 transform.position = nextPos;
             }
