@@ -18,10 +18,15 @@ public class PlayerStatus : MonoBehaviour
 
     public void Die()
     {
-        if (currHp > 0)
-            return;
-
         GetComponent<UseSkill>().enabled = false;
         GetComponent<PlayerMove>().enabled = false;
+    }
+
+    public void GetDamage(float damge)
+    {
+        currHp -= damge;
+
+        if (currHp <= 0)
+            Die();
     }
 }
