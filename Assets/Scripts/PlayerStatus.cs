@@ -8,6 +8,9 @@ public class PlayerStatus : MonoBehaviour
     private float maxHp = 100f;
     private float currHp;
 
+    [SerializeField]
+    private float atk = 10f;
+
     private void Start()
     {
         currHp = maxHp;
