@@ -3,15 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStatus : MonoBehaviour
+public class PlayerStatus : PlayerStat
 {
-    [SerializeField]
-    private float maxHp = 100f;
-    private float currHp;
-
-    [SerializeField]
-    private float atk = 10f;
-
     [SerializeField]
     private Image hpBarImg;
 
