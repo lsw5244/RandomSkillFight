@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class PlayerStatus : PlayerStat
 {
@@ -25,6 +26,7 @@ public class PlayerStatus : PlayerStat
     {
         GetComponent<UseSkill>().enabled = false;
         GetComponent<PlayerMove>().enabled = false;
+        GetComponent<NavMeshAgent>().enabled = false;
     }
 
     public void GetDamage(float damge)
