@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStatus : MonoBehaviour
 {
@@ -11,9 +12,20 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField]
     private float atk = 10f;
 
+    [SerializeField]
+    private Image hpBarImg;
+
     private void Start()
     {
         currHp = maxHp;
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            GetDamage(10f);
+        }
     }
 
     public void Die()
@@ -25,6 +37,8 @@ public class PlayerStatus : MonoBehaviour
     public void GetDamage(float damge)
     {
         currHp -= damge;
+
+        hpBarImg.fillAmount = currHp / maxHp;
 
         if (currHp <= 0)
             Die();

@@ -916,6 +916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   atk: 10
+  hpBarImg: {fileID: 1105644275}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
