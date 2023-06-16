@@ -879,6 +879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 963194227}
+  hpCanvas: {fileID: 559589976}
 --- !u!195 &609082886
 NavMeshAgent:
   m_ObjectHideFlags: 0

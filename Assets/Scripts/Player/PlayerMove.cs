@@ -11,12 +11,17 @@ public class PlayerMove : MonoBehaviour
 
     private Vector3 destinationPos;
 
+    [SerializeField]
+    private GameObject hpCanvas;
+    private Vector3 hpCanvasPosGap;
+
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
+
+        hpCanvasPosGap = transform.position - hpCanvas.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetMouseButton(1))
@@ -31,5 +36,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         nav.SetDestination(destinationPos);
+
+        hpCanvas.transform.position = transform.position - hpCanvasPosGap;
     }
 }
